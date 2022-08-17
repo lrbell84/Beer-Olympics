@@ -9,7 +9,7 @@ const BeerInfo = (props) => {
   const { beersArray } = props;
 
   const beersArr = beersArray.filter((beer) => {
-    return beer.id === id;
+    return beer.id == id;
   });
 
   const singleBeer = beersArr[0];

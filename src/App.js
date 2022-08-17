@@ -14,6 +14,7 @@ function App() {
     const [searchTerm, setSearchTerm] = useState('')
     const [ph, setPh] = useState(false)
     const [abv, setAbv] = useState(false)
+    const [first_brewed, setFirst_Brewed] = useState(false)
     
     useEffect(() => {
         fetch('https://api.punkapi.com/v2/beers?per_page=80')
@@ -30,6 +31,10 @@ function App() {
 
     const filterByABV = () => {
         setAbv(!abv)
+    }
+
+    const filterByFirstBrewed = () => {
+      setFirst_Brewed(!first_brewed)
     }
 
     const handleInput = event => {
@@ -51,6 +56,10 @@ function App() {
         if (ph) {
           beerHasMatched = beerHasMatched && result.ph < 4;
         }
+
+        if (first_brewed) {
+          beerHasMatched = beerHasMatched && result.first_brewed < "02/2009";
+        }
       
         return beerHasMatched;
       });
@@ -67,7 +76,7 @@ function App() {
                 <Route path="/">
 
                     <SearchBox handleInput={handleInput} searchTerm={searchTerm}/>
-                    <FiltersList filterByABV={filterByABV} filterByPH={filterByPH} />
+                    <FiltersList filterByABV={filterByABV} filterByPH={filterByPH} filterByFirstBrewed={filterByFirstBrewed } />
                     <BeersList beersArray={filterResults} />
                 </Route>
             </Switch>
