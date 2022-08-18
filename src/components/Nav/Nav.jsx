@@ -6,7 +6,7 @@ const Nav = () => {
   return (
     <div className="nav">
       <Link to="/">
-        <h3>7 Days Without Beer = 1 Weak - Be Happy - Sip Happens</h3>
+        <h3>7 Days Without Beer = 1 Weak ~ Be Happy ~ Sip Happens</h3>
       </Link>
     </div>
   );
